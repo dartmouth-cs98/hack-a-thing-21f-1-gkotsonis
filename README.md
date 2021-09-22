@@ -7,6 +7,7 @@ I attempted to build an ios app using react native that allows users to search f
 
 ![Landing](screenshots/landingScreen.png)
 ![Edited](screenshots/editedSearch.png)
+![Edited](screenshots/searchResults.png)
 
 ## Who Did What?
 
