@@ -117,7 +117,7 @@ export default class SearchPage extends Component<{}> {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.description}>Search for houses to buy!</Text>
+        <Text style={styles.description}>Search for houses to buy in MA!</Text>
         <Text style={styles.description}>Search by city or town name.</Text>
         <View style={styles.flowRight}>
           <TextInput
