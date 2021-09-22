@@ -92,7 +92,21 @@ export default class SearchPage extends Component<{}> {
       squareFootage: result.squareFootage,
       price: result.price,
     }));
-    console.log(res);
+    return <FlatList data={res} renderItem={this._renderItem(res)} />;
+    return res;
+  };
+
+  // render search results
+  _renderItem = results => {
+    return (
+      <View>
+        <Text>{results.rawAddress}</Text>
+        <Text>{results.bedrooms}</Text>
+        <Text>{results.bathrooms}</Text>
+        <Text>{results.squareFootage}</Text>
+        <Text>{results.price}</Text>
+      </View>
+    );
   };
 
   // render search page
@@ -100,12 +114,11 @@ export default class SearchPage extends Component<{}> {
     const spinner = this.state.isLoading ? (
       <ActivityIndicator size="large" />
     ) : null;
+
     return (
       <View style={styles.container}>
         <Text style={styles.description}>Search for houses to buy!</Text>
-        <Text style={styles.description}>
-          Search by place-name or postcode.
-        </Text>
+        <Text style={styles.description}>Search by city or town name.</Text>
         <View style={styles.flowRight}>
           <TextInput
             style={styles.searchInput}
@@ -116,17 +129,17 @@ export default class SearchPage extends Component<{}> {
           <Button onPress={this._onSearchPressed} color="#48BBEC" title="Go" />
         </View>
         {this.state.queryResults && this.state.queryResults.length ? (
-          (this._formatResults(),
-          (
-            <View>
-              {this.state.queryResults.map(result => (
-                <View>
-                  <Text>{result.addressLine1 || 'No Address'}</Text>
-                </View>
-              ))}
-            </View>
-          ))
+          this._formatResults()
         ) : (
+          // (
+          //   <View>
+          //     {this.state.queryResults.map(result => (
+          //       <View>
+          //         <Text>{result.addressLine1 || 'No Address'}</Text>
+          //       </View>
+          //     ))}
+          //   </View>
+          // ))
           <Image
             source={require('./Resources/house.png')}
             style={styles.image}
